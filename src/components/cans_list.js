@@ -2,7 +2,7 @@ import React from 'react';
 import CansListItem from './cans_list_item';
 
 const CansList = (props) => {
-  console.log(props.cans.length);
+  
 
   const canItems = props.cans.map((can) => {
     return <CansListItem key={can.id} can={can} />
