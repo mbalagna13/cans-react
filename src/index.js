@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import CansList from './components/cans_list'
 
 class App extends Component {
   constructor(props) {
@@ -9,16 +10,20 @@ class App extends Component {
     this.state = { cans: [] }
 
     axios.get('http://localhost:3000/api/v1/cans')
-        .then((cans) => {
-          console.log(cans);
-          this.setState({ cans });
-          // This is equivalent to this.setState({ cans:cans})
+        .then((response) => {
+          console.log(response.data.message);
+          this.setState({ cans: response.data.message });
+          // console.log(cans);
+
         });
+        console.log(this.state.cans);
   }
 
   render() {
     return (
-      <div>HI!</div>
+      <div>
+        <CansList cans={this.state.cans} />
+      </div>
     )
   }
 
