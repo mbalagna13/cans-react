@@ -4,10 +4,13 @@ import CansListItem from './cans_list_item';
 const CansList = (props) => {
   console.log(props.cans.length);
 
+  const canItems = props.cans.map((can) => {
+    return <CansListItem key={can.id} can={can} />
+  })
 
   return (
     <ul className="col-md-4 list-group">
-    {props.cans.length}
+      {canItems}
     </ul>
   )
 }
