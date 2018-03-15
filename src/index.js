@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const App = () => {
-  axios.get('http://localhost:3000/api/v1/cans')
-    .then(function(response) {
-      console.log(response);
-    })
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-  return <div>HI!</div>;
+    this.state = { cans: [] }
+
+    axios.get('http://localhost:3000/api/v1/cans')
+        .then((cans) => {
+          console.log(cans);
+          this.setState({ cans });
+          // This is equivalent to this.setState({ cans:cans})
+        });
+  }
+
+  render() {
+    return (
+      <div>HI!</div>
+    )
+  }
 
 }
+
 
 ReactDOM.render(<App />, document.querySelector('.container'));
